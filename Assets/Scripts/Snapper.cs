@@ -13,13 +13,13 @@ public class Snapper : MonoBehaviour
 
     private void SnapToGrid()
     {
-        var position = this.transform.position;
+        var position = transform.position;
         var newPosition = new Vector3(
             Mathf.RoundToInt(position.x),
             Mathf.RoundToInt(position.y),
             Mathf.RoundToInt(position.z)
         );
 
-        this.transform.position = newPosition;
+        transform.position = newPosition;
     }
 }

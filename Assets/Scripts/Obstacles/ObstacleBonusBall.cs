@@ -20,7 +20,9 @@ namespace Obstacles
 
         protected override void HandleDead()
         {
-            Instantiate(ballPrefab, _balls.transform, true);
+            GameObject newBalls = Instantiate(ballPrefab, gameObject.transform);
+
+            newBalls.transform.parent = _balls.transform;
             Destroy(gameObject);
         }
     }
