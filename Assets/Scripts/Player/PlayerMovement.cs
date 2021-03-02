@@ -44,8 +44,6 @@ namespace Player
                 playerLocalPos.y - paddleLocalPos.y
             );
 
-            print($"Player{player} " + (posRelativeToPaddle.x < -maxRange));
-
             if (posRelativeToPaddle.x < -maxRange)
                 _transform.localPosition = new Vector2(paddleLocalPos.x - maxRange, playerLocalPos.y);
             if (posRelativeToPaddle.x > maxRange)

@@ -1,18 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+namespace Obstacles
 {
-    // Start is called before the first frame update
-    void Start()
+    public abstract class Obstacle : MonoBehaviour
     {
-        
-    }
+        [SerializeField] protected int health;
+        [SerializeField] protected int point;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public delegate void ObstacleDeadHandler(int point);
+
+        public static event ObstacleDeadHandler ObstacleDead;
+
+        protected void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Ball"))
+                GETHit();
+
+            if (health <= 0)
+            {
+                OnObstacleDead();
+                HandleDead();
+            }
+        }
+
+        protected abstract void GETHit();
+        protected abstract void HandleDead();
+
+        protected virtual void OnObstacleDead()
+        {
+            if (ObstacleDead != null)
+                ObstacleDead(point);
+        }
     }
 }
