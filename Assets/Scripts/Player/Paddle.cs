@@ -20,6 +20,8 @@ public class Paddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print("local " + _transform.localPosition);
+        print("global " + _transform.position);
         HandlePosition();
         HandleRotation();
         HandleWidth();
@@ -27,18 +29,18 @@ public class Paddle : MonoBehaviour
 
     private void HandlePosition()
     {
-        Vector3 player1Pos = player1.transform.position;
-        Vector3 player2Pos = player2.transform.position;
+        Vector3 player1Pos = player1.transform.localPosition;
+        Vector3 player2Pos = player2.transform.localPosition;
 
         float xPos = (player1Pos.x + player2Pos.x) / 2;
         float yPos = (player1Pos.y + player2Pos.y) / 2;
-        _transform.position = new Vector3(xPos, yPos, 0);
+        _transform.localPosition = new Vector3(xPos, yPos, 0);
     }
 
     private void HandleRotation()
     {
-        Vector3 player1Pos = player1.transform.position;
-        Vector3 player2Pos = player2.transform.position;
+        Vector3 player1Pos = player1.transform.localPosition;
+        Vector3 player2Pos = player2.transform.localPosition;
 
         double angle = Math.Atan((player2Pos.x - player1Pos.x) / (player1Pos.y - player2Pos.y)) * (180 / Math.PI);
 
@@ -47,8 +49,8 @@ public class Paddle : MonoBehaviour
 
     private void HandleWidth()
     {
-        Vector3 player1Pos = player1.transform.position;
-        Vector3 player2Pos = player2.transform.position;
+        Vector3 player1Pos = player1.transform.localPosition;
+        Vector3 player2Pos = player2.transform.localPosition;
 
         float xDif = player1Pos.x - player2Pos.x;
         float yDif = player1Pos.y - player2Pos.y;

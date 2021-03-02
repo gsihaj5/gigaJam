@@ -15,7 +15,7 @@ TagManager:
   - 
   - Player
   - Paddle
-  - 
+  - Ball
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Paddle
+    uniqueID: 3780777893
+    locked: 0
+  - name: Player
+    uniqueID: 3970536019
     locked: 0
