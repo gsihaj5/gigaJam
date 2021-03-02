@@ -6,20 +6,20 @@ using UnityEngine;
 
 public class PointManager : MonoBehaviour
 {
-    private int _point;
+    public int Point { get; private set; }
 
     [SerializeField] private TextMeshProUGUI scoreText;
 
     // Start is called before the first frame update
     void Start()
     {
-        _point = 0;
+        Point = 0;
         Obstacle.ObstacleDead += OnObstacleDead;
     }
 
     private void OnObstacleDead(int point)
     {
-        _point += point;
-        scoreText.text = $"Points: {_point}";
+        Point += point;
+        scoreText.text = $"Points: {Point}";
     }
 }

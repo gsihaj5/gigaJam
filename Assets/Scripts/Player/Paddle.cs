@@ -1,62 +1,61 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Paddle : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private GameObject player1;
-
-    [SerializeField] private GameObject player2;
-
-    private Transform _transform;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Paddle : MonoBehaviour
     {
-        _transform = GetComponent<Transform>();
-    }
+        [SerializeField] private GameObject player1;
 
-    // Update is called once per frame
-    void Update()
-    {
-        print("local " + _transform.localPosition);
-        print("global " + _transform.position);
-        HandlePosition();
-        HandleRotation();
-        HandleWidth();
-    }
+        [SerializeField] private GameObject player2;
 
-    private void HandlePosition()
-    {
-        Vector3 player1Pos = player1.transform.localPosition;
-        Vector3 player2Pos = player2.transform.localPosition;
+        private Transform _transform;
 
-        float xPos = (player1Pos.x + player2Pos.x) / 2;
-        float yPos = (player1Pos.y + player2Pos.y) / 2;
-        _transform.localPosition = new Vector3(xPos, yPos, 0);
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            _transform = GetComponent<Transform>();
+        }
 
-    private void HandleRotation()
-    {
-        Vector3 player1Pos = player1.transform.localPosition;
-        Vector3 player2Pos = player2.transform.localPosition;
+        // Update is called once per frame
+        void Update()
+        {
+            HandlePosition();
+            HandleRotation();
+            HandleWidth();
+        }
 
-        double angle = Math.Atan((player2Pos.x - player1Pos.x) / (player1Pos.y - player2Pos.y)) * (180 / Math.PI);
+        private void HandlePosition()
+        {
+            Vector3 player1Pos = player1.transform.localPosition;
+            Vector3 player2Pos = player2.transform.localPosition;
 
-        _transform.eulerAngles = new Vector3(0, 0, (float) angle - 90);
-    }
+            float xPos = (player1Pos.x + player2Pos.x) / 2;
+            float yPos = (player1Pos.y + player2Pos.y) / 2;
+            _transform.localPosition = new Vector3(xPos, yPos, 0);
+        }
 
-    private void HandleWidth()
-    {
-        Vector3 player1Pos = player1.transform.localPosition;
-        Vector3 player2Pos = player2.transform.localPosition;
+        private void HandleRotation()
+        {
+            Vector3 player1Pos = player1.transform.localPosition;
+            Vector3 player2Pos = player2.transform.localPosition;
 
-        float xDif = player1Pos.x - player2Pos.x;
-        float yDif = player1Pos.y - player2Pos.y;
+            double angle = Math.Atan((player2Pos.x - player1Pos.x) / (player1Pos.y - player2Pos.y)) * (180 / Math.PI);
 
-        double width = Math.Sqrt(xDif * xDif + yDif * yDif) * 100;
+            _transform.eulerAngles = new Vector3(0, 0, (float) angle - 90);
+        }
 
-        _transform.transform.localScale = new Vector3((float) width, 20, 0);
+        private void HandleWidth()
+        {
+            Vector3 player1Pos = player1.transform.localPosition;
+            Vector3 player2Pos = player2.transform.localPosition;
+
+            float xDif = player1Pos.x - player2Pos.x;
+            float yDif = player1Pos.y - player2Pos.y;
+
+            double width = Math.Sqrt(xDif * xDif + yDif * yDif);
+
+            _transform.transform.localScale = new Vector3((float) width, 1, 1);
+        }
     }
 }
