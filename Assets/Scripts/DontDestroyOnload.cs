@@ -5,13 +5,15 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public class DontDestroyOnload : MonoBehaviour
 {
+    private static DontDestroyOnload _instance;
+
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-    }
+        DontDestroyOnLoad(this);
 
-    // Update is called once per frame
-    void Update()
-    {
+        if (_instance == null)
+            _instance = this;
+        else
+            Destroy(gameObject);
     }
 }
