@@ -22,7 +22,7 @@ PrefabInstance:
     - target: {fileID: 4993569514595673672, guid: feedeb6c4f4e6174ab31c9bbdbf61629,
         type: 3}
       propertyPath: m_Name
-      value: ObstacleStaticMedium
+      value: ObstacleStaticMedium Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4993569514595673674, guid: feedeb6c4f4e6174ab31c9bbdbf61629,
         type: 3}
@@ -90,6 +90,11 @@ PrefabInstance:
       propertyPath: point
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4993569514595673677, guid: feedeb6c4f4e6174ab31c9bbdbf61629,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: bb70d56b10cbf834eb2f586b200e7518, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feedeb6c4f4e6174ab31c9bbdbf61629, type: 3}
 --- !u!1 &1342001015402548130 stripped
