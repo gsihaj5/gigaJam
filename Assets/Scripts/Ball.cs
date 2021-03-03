@@ -17,6 +17,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        FindObjectOfType<AudioManager>().Play("Bounce");
         if (other.gameObject.CompareTag("BallDespawner"))
             Destroy(gameObject);
     }
